@@ -1,0 +1,158 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar-brand img {
+    max-width: 120px;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+}
+
+.hero-card {
+    border-radius: 0;
+    background-color: cornsilk;
+}
+
+footer {
+    margin-top: auto;
+    padding: 2rem 0;
+    width: 100%;
+}
+
+footer h5 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+footer .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.container {
+    flex: 1;
+}
+
+.container-fluid.hero-section {
+    flex: 1;
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    background: linear-gradient(to bottom, #F8F4F1, #F9F3EE, #FCEEE1, #FCE0CD);
+}
+
+.palace-section, .room-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Coming Soon Card */
+.unavailable-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ccc;
+}
+
+.unavailable-card img {
+    opacity: 0.7;
+}
+
+.unavailable-card .btn-secondary {
+    background-color: #444;
+    border-color: #444;
+    cursor: not-allowed;
+}
+
+.unavailable-card .card-body, 
+.unavailable-card .card-footer {
+    opacity: 0.8;
+}
+
+/* Modals */
+.modal-content {
+    background-color: #fdf6e3;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    font-family: 'Georgia', serif;
+}
+
+.modal-header, 
+.modal-footer {
+    background-color: #eee8d5;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+
+.modal-title, .form-label {
+    color: #2c3e50;
+}
+
+.btn-primary {
+    background-color: #6c5ce7;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #b2bec3;
+    border: none;
+}
+
+.edit-btn {
+    margin-left: 10px;
+}
+
+.custom-textarea {
+    height: 150px;
+    background-color: #faf3e0;
+    border: 1px solid #dcdcdc;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.modal-card-title {
+    font-family: 'Georgia', serif;
+    color: #2c3e50;
+}
+
+.modal-card-text {
+    font-family: 'Courier New', Courier, monospace;
+    color: #2c3e50;
+}
+
+.modal-card {
+    background-color: #fdf6e3;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+#room-image {
+    width: auto;
+    max-height: 90vh;
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.error-page h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #dc3545;
+}
+
+.error-page p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}

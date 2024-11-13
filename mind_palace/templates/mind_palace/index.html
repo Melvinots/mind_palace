@@ -1,0 +1,34 @@
+{% extends "mind_palace/layout.html" %}
+{% load static %}
+
+{% block body %} 
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="ratio ratio-16x9 shadow-sm rounded">
+                    <img class="w-100" src="{% static 'mind_palace/images/default-room.png' %}" type="video/mp4"/>
+                </div>
+            </div>
+
+            <div class="col-md-5 d-flex flex-column justify-content-center">
+                <div class="hero-card card shadow-lg py-3">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Unlock Your Mind Palace</h2>
+                        <p class="card-text text-center">
+                            Discover expertly crafted Mind Palaces, designed to efficiently organize and store information for easy recall. Start your journey and experience the power of a well-structured mind.
+                        </p>
+                        <div class="text-center">
+                            {% if not user.is_authenticated %}
+                                <a href="{% url 'login' %}" class="btn btn-secondary mt-3">Start Your Own Mind Palace</a>
+                            {% else %}
+                                <a href="{% url 'palace' %}" class="btn btn-secondary mt-3">Explore Your Mind Palace</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+{% endblock %}

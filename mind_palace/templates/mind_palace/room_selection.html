@@ -1,0 +1,40 @@
+{% extends "mind_palace/layout.html" %}
+{% load static%}
+
+{% block body %} 
+    <div class="container my-5 room-section">
+        <h2 class="text-center">Choose Your Room</h2>
+        {% if rooms %}
+            <div class="row">
+                {% for room in rooms %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'mind_palace/images/' %}{{ room.image }}" class="card-img-top" alt="{{ room.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ room.name }}</h5>
+                                <p class="card-text">{{ room.description }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <form action="{% url 'room_selection' palace_id %}" method="post"> 
+                                    {% csrf_token %} 
+                                    <input type="hidden" name="name" value="{{ room.name }}">
+                                    <input type="hidden" name="image" value="{{ room.image }}"> 
+                                    <button type="submit" class="btn btn-primary">Add Room</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <p>You don't have any rooms to choose from.</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+    
+    
+    
+    

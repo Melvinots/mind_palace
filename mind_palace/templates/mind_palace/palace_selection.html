@@ -1,0 +1,51 @@
+{% extends "mind_palace/layout.html" %}
+{% load static%}
+
+{% block body %} 
+
+    <div class="container my-5 palace-section">
+        <h2 class="text-center">Choose Your Palace</h2>
+
+        {% if palaces %}
+            <div class="row">
+                {% for palace in palaces %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'mind_palace/images/' %}{{ palace.image }}" class="card-img-top" alt="{{ palace.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ palace.name }}</h5>
+                                <p class="card-text">{{ palace.description }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <form action="{% url 'palace_selection' %}" method="post"> 
+                                    {% csrf_token %} 
+                                    <input type="hidden" name="name" value="{{ palace.name }}">
+                                    <input type="hidden" name="image" value="{{ palace.image }}"> 
+                                    <button type="submit" class="btn btn-primary">Add Palace</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 unavailable-card">
+                        <img src="{% static 'mind_palace/images/palace-3.png' %}" class="card-img-top" alt="Skyward Citadel">
+                        <div class="card-body">
+                            <h5 class="card-title">Skyward Citadel</h5>
+                            <p class="card-text">Experience the heights of imagination in the Skyward Citadel, soon to be unveiled.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-secondary" disabled>Coming Soon...</a>
+                        </div>
+                    </div>
+                </div>                             
+            </div>
+        {% else %}
+            <div class="text-center">
+                <p>You don't have any palaces to choose from.</p>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

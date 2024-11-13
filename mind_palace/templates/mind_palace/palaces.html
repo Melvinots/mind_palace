@@ -1,0 +1,49 @@
+{% extends "mind_palace/layout.html" %}
+{% load static%}
+
+{% block body %} 
+    <div class="container my-5 palace-section">
+        <h2 class="text-center">Your Palaces</h2>
+
+        {% if messages %} 
+            <div class="container mt-3"> 
+                {% for message in messages %} 
+                    <div class="alert {{ message.tags }}" role="alert"> 
+                        {{ message }} 
+                    </div> 
+                {% endfor %} 
+            </div> 
+        {% endif %}
+
+        {% if palaces %}
+            <div class="row">
+                {% for palace in palaces %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm rounded">
+                            <img src="{% static 'mind_palace/images/' %}{{ palace.image }}" class="card-img-top rounded-top" alt="{{ palace.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ palace.name }}</h5>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="{% url 'room' palace.id %}" class="btn btn-primary w-100">View Palace</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{% url 'palace_selection' %}" class="btn btn-secondary mt-3">Add Another Palace</a>
+            </div>
+        {% else %}
+            <div class="text-center">
+                <p>You don't have any palaces yet.</p>
+                <a href="{% url 'palace_selection' %}" class="btn btn-secondary mt-3">Add Your First Palace</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+    
+    
+    
+    

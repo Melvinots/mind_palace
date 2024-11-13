@@ -1,0 +1,37 @@
+{% extends "mind_palace/layout.html" %}
+
+{% block body %}
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="mb-4 text-center">Login</h2>
+
+                        {% if message %}
+                            <div class="alert alert-danger">{{ message }}</div>
+                        {% endif %}
+
+                        <form action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input id="username" autofocus class="form-control" type="text" name="username" placeholder="Username" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="password" class="form-label">Password</label>
+                                <input id="password" class="form-control" type="password" name="password" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                        </form>
+
+                        <p class="mt-3 text-center">Don't have an account? <a href="{% url 'register' %}">Register here.</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
