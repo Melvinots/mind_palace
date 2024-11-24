@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const createSubtopicElement = (subtopic) => `
         <div class="modal-card border rounded shadow-sm p-3 mb-3">
             <h5 class="modal-card-title d-flex justify-content-between align-items-center" data-subtopic="${subtopic.id}">
-                <span class="fw-bold">${subtopic.title}</span>
+                <span class="fw-bold">${escapeHTML(subtopic.title)}</span>
                 <div>
                     <button class="btn bg-primary-subtle edit-btn ms-3" title="Edit" data-bs-target="#staticBackdrop2" data-bs-toggle="modal">
                         <i class="bi bi-pencil"></i>
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 </div>
             </h5>
-            ${subtopic.content ? `<p class="modal-card-text mt-2">${subtopic.content}</p>` : ''}
+            ${subtopic.content ? `<pre class="modal-card-text mt-2">${escapeHTML(subtopic.content)}</pre>` : ''}
         </div>`;
 
 
@@ -301,6 +301,12 @@ function updateSubtopicInUI({ id, title, content }) {
         }
     }
 }
+
+const escapeHTML = (str) => {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+};
 
 window.addEventListener('load', resizeImageMap);
 window.addEventListener('resize', resizeImageMap);

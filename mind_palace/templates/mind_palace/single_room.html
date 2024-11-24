@@ -33,7 +33,7 @@
                     <div class="d-flex align-items-center">
                         <h1 class="modal-title fs-5 fw-bold me-3" id="staticBackdropLabel">
                             <span id="topicNameDisplay">Topic Name</span>
-                            <input type="text" id="topicNameInput" class="form-control" style="display: none;"/>
+                            <input type="text" id="topicNameInput" class="form-control" style="display: none;" maxlength="30"/>
                         </h1>
                         <button class="btn p-0 border-0 bg-transparent" id="editTopicBtn" title="Rename Topic">
                             <i class="bi bi-pencil-square"></i>
@@ -67,7 +67,7 @@
                     <form id="noteForm">
                         <div class="mb-3">
                             <label for="noteTitle" class="form-label">Subtopic</label>
-                            <input type="text" class="form-control" id="noteTitle" placeholder="Enter subtopic...">
+                            <input type="text" class="form-control" id="noteTitle" maxlength="25" placeholder="Enter subtopic...">
                         </div>
                         <div class="mb-3">
                             <label for="noteContent" class="form-label">Details</label>
