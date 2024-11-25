@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
 html, body {
     height: 100%;
     margin: 0;
@@ -155,4 +157,30 @@ footer .list-unstyled {
 .error-page p {
     font-size: 1.25rem;
     margin-bottom: 1.5rem;
+}
+
+@media print {
+    header, .hero-section, footer {
+        display: none;
+    }
+
+    #printableArea {
+        display: block !important;
+    }
+
+    #printableArea h2 {
+        font-size: 1.5rem;
+        font-family: 'Roboto Condensed', serif;
+        text-transform: uppercase;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+    #printableArea h3 {
+        font-size: 1.2rem;
+        font-family: 'Roboto Condensed', sans-serif;
+        color: rgb(56, 56, 203);
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
 }

@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 loadTopics(data.title, data.topics);
                 modalHeader.setAttribute('data-item', data.id);
+                preparePrintableContent();
             }
         } catch (error) {
             console.error(error);
@@ -332,3 +333,55 @@ function resizeImageMap() {
         area.coords = scaledCoords.join(',');
     }
 }
+
+// Print functionality
+function preparePrintableContent() {
+    const topicName = document.querySelector('#topicNameDisplay').textContent.trim();
+    const subtopicsContainer = document.querySelector('.modal-body');
+    const subtopics = Array.from(subtopicsContainer.children).map(subtopic => {
+        const title = subtopic.querySelector('.fw-bold')?.textContent.trim() || '';
+        const details = subtopic.querySelector('.modal-card-text')?.textContent.trim() || '';
+        return `
+            <h3>
+                <i>${escapeHTML(title)}</i>
+            </h3>
+            <pre style="white-space: pre-wrap; word-wrap: break-word;">${escapeHTML(details)}</pre>
+        `;
+    });
+
+    // Build printable content
+    const printContent = `
+        <div>
+            <h2>${escapeHTML(topicName)}</h2>
+            ${subtopics.join('')}
+        </div>
+    `;
+
+    // Add content to the hidden printable area
+    const printableArea = document.querySelector('#printableArea');
+    printableArea.innerHTML = printContent;
+}
+
+// Print button functionality
+document.querySelector('.btn-print').addEventListener('click', () => {
+    preparePrintableContent();
+    document.fonts.ready.then(function() {
+        setTimeout(() => {
+            window.print();
+        }, 500);
+    });
+});
+
+// Handle Ctrl + P or Command + P
+window.addEventListener('beforeprint', () => {
+    const modal = document.getElementById('staticBackdrop');
+    const bootstrapModal = bootstrap.Modal.getInstance(modal);
+    if (bootstrapModal) {
+        bootstrapModal.hide();
+        setTimeout(() => {
+            preparePrintableContent();
+        }, 200);
+    } else {
+        preparePrintableContent();
+    }
+});
