@@ -1,3 +1,5 @@
+![Alt text](final-project.png)
+
 # Mind Palace
 
 ## Distinctiveness and Complexity
